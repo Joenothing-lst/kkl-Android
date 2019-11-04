@@ -36,12 +36,6 @@ async def send_group_list(session: CommandSession):
 async def ts(session: CommandSession):
     await session.send(message=str(session.ctx))
 
-@on_command('send_antang', aliases=('看看安堂','看看安堂姐','康康安堂','康康安堂姐','来张安堂','来张安堂姐','安堂姐','安堂','来点安堂','来点安堂姐'), only_to_me=False)
-async def antang(session: CommandSession):
-    filePath = 'C:\\Users\\Administrator\\Downloads\\CQP-xiaoi\\酷Q Pro\\data\\image\\antang\\'
-    lst=os.listdir(filePath)
-    await session.send(f'[CQ:image,file=antang/{choice(lst)}]')
-
 bot = nonebot.get_bot()
 
 first=True
@@ -184,67 +178,7 @@ async def group_ban(context):
             pass
     except ActionFailed as e:
         print(e.retcode)
-'''
-    for i in group_memberinfo:
-        if i['role']=='owner' or i['role']=='admin':
-            f_manager.append(i['user_id'])
 
-#    for i in context:
-#        print(i,type(i))
-    if '抽' in f_message and '奖' in f_message and '路' not in f_message:
-        if f_user_id not in f_manager:
-            little = randint(120,480)
-            large = randint(10000,25000)
-            if '大' in f_message or '带' in f_message:
-                await bot.set_group_ban( group_id=f_group_id, user_id=f_user_id, duration=large)
-            else:
-                await bot.set_group_ban( group_id=f_group_id, user_id=f_user_id, duration=little)
-        else:
-            await bot.send_group_msg(group_id=f_group_id, message='权限狗无法参与(自裁吧')
-
-    if '[CQ:at,qq=' in f_message and 'all' not in f_message and '一带一路' in f_message:
-        p = 'CQ:at,qq=(\\d+)]'
-        qq = int(re.search(p,f_message).group(1))
-        if f_user_id not in f_manager and qq not in f_manager:
-    #        print('get!!!')
-            bantime = randint(120,480)
-            await bot.set_group_ban( group_id=f_group_id, user_id=f_user_id, duration=bantime)
-            await bot.set_group_ban( group_id=f_group_id, user_id=qq, duration=bantime + randint(-60,180))
-            await bot.send_group_msg( group_id=f_group_id, message='恭喜[CQ:at,qq=' + str(f_user_id) + ']成功带动了[CQ:at,qq=' + str(qq) + ']的经济发展[CQ:image,file=C9F82E8E542E0C9345E85CF03D0D42C7.gif]')
-        elif f_user_id not in f_manager and qq in f_manager:
-            await bot.send_group_msg( group_id=f_group_id, message='[CQ:at,qq=' + str(f_user_id) + '] 你的行动失败了，没有符合帮扶政策的群员，你将独享')
-            await bot.set_group_ban( group_id=f_group_id, user_id=f_user_id, duration=randint(120,480))
-        elif f_user_id in f_manager:
-            await bot.send_group_msg(group_id=f_group_id, message='权限狗无法参与(自裁吧')
-        else:
-            pass
-
-    if '解除禁言' in f_message and '[CQ:at,qq=' in f_message and 'all' not in f_message:
-        if f_user_id in f_manager:
-            p = 'CQ:at,qq=(\\d+)]'
-            qq = int(re.search(p,f_message).group(1))
-            await bot.set_group_ban( group_id=f_group_id, user_id=qq, duration=0)
-        else:
-            await bot.send_group_msg( group_id=f_group_id, message='这是管理权限哦')
-
-#normar
-    if '晚安' in f_message:
-        if f_user_id in master:
-            await bot.send_group_msg(group_id=f_group_id, message='[CQ:at,qq=' + str(f_user_id) + '] 晚安，主人~ mua~[CQ:image,file=TIM图片20190922214418_waifu2x_art_noise2_tta_1.png]')
-        else :
-            await bot.send_group_msg(group_id=f_group_id, message='[CQ:at,qq=' + str(f_user_id) + '] 晚安，骑士君~[CQ:image,file=TIM图片20190922214418_waifu2x_art_noise2_tta_1.png]')
-    elif '送' in f_message and '我' in f_message:
-        await bot.send_group_msg(group_id=f_group_id, message='[CQ:image,file=AEAEFF192D082E289F9859CE4424B2B0.jpg]')
-    elif '妈' in f_message :
-        f=True
-        for i in ['狗','你','的','他','草','呀','查询']:
-            if i in f_message:
-                f=False
-        if f:
-            await bot.send_group_msg(group_id=f_group_id, message='[CQ:at,qq=' + str(f_user_id) + ']？[CQ:image,file=EA6B4EF5F4759F7DAFEF70107A79F9A0.jpg]')
-    else:
-        pass
-'''
 @on_command('unset_ban', aliases=('大赦天下','大赦天下！'), only_to_me=False)
 async def unset_ban(session: CommandSession):
 #    global manager,master
@@ -275,10 +209,10 @@ async def send_all_group(session: CommandSession):
 
 header = {'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36',}
 #        'Content-Type':'application/x-www-form-urlencoded'}
-#pytesseract.pytesseract.tesseract_cmd = 'C://Program Files (x86)/Tesseract-OCR/tesseract.exe'
-APP_ID = '17576714' # 刚才获取的 ID，下同
-API_KEY = 'gwjDNjYzWsdGwHxsa8DyuAGP'
-SECRECT_KEY = '5bqz3C16U4QknWGKHxRswWo3b7eMzGw8'
+
+APP_ID = '*******' # 刚才获取的 ID，下同
+API_KEY = '**********************'
+SECRECT_KEY = '**********************'
 client = AipOcr(APP_ID, API_KEY, SECRECT_KEY)
 @on_command('img_to_str', aliases=('识图取字','取字'), only_to_me=False)
 async def i_t_s(session: CommandSession):
@@ -319,101 +253,6 @@ async def s_t_w(session: CommandSession):
 #{'log_id': 3472477253040444149, 'words_result_num': 6, 'words_result': [{'words': '长相思'}, {'words': '【清】纳兰性德'}, {'words': '山一程,水一程。身向榆'}, {'words': '关那畔行,夜深千帐灯。'}, {'words': '风一更,雪一更。聒碎乡'}, {'words': '心梦不成,故园无此声。'}]}
 #    text = pytesseract.image_to_string(Image.open(buf),lang='chi_sim')
 
-
-
-'''import pytesseract
-from PIL import Image
-
-pytesseract.pytesseract.tesseract_cmd = 'C://Program Files (x86)/Tesseract-OCR/tesseract.exe'
-text = pytesseract.image_to_string(Image.open('E://figures/other/poems.jpg'))
-
- INFO: Self: 1094913531, Message -7 from 912871833@[群:697475156]: [CQ:image,file=CCD54EA1D1D8BAEB718FC5F7162D1C5F.jpg,url=https://gchat.qpic.cn/gchatpic_new/912871833/779166649-2932650714-CCD54EA1D1D8BAEB718FC5F7162D1C5F/0?vuin=1094913531&amp;amp;term=2]
-[2019-10-20 23:43:15,601 nonebot] DEBUG: Parsing command: [CQ:image,file=CCD54EA1D1D8BAEB718FC5F7162D1C5F.jpg,url=https://gchat.qpic.cn/gchatpic_new/912871833/779166649-2932650714-CCD54EA1D1D8BAEB718FC5F7162D1C5F/0?vuin=1094913531&amp;amp;term=2]
-[2019-10-20 23:43:15,601 nonebot] DEBUG: Matched command start: (empty)
-[2019-10-20 23:43:15,601 nonebot] DEBUG: Split command name: ('[CQ:image,file=CCD54EA1D1D8BAEB718FC5F7162D1C5F.jpg,url=https:', '', 'gchat.qpic.cn', 'gchatpic_new', '912871833', '779166649-2932650714-CCD54EA1D1D8BAEB718FC5F7162D1C5F', '0?vuin=1094913531&amp;amp;term=2]')
-[2019-10-20 23:43:15,601 nonebot] DEBUG: Command ('[CQ:image,file=CCD54EA1D1D8BAEB718FC5F7162D1C5F.jpg,url=https:', '', 'gchat.qpic.cn', 'gchatpic_new', '912871833', '779166649-2932650714-CCD54EA1D1D8BAEB718FC5F7162D1C5F', '0?vuin=1094913531&amp;amp;term=2]') not found
-[2019-10-20 23:43:15,601 nonebot] DEBUG: Not a known command, ignored
-'''
-'''
-一共有26个群：
------------------
-群名称:战舰少女R官托Collection
-群号:237681308
------------------
-群名称:心爱的pcr机器人
-群号:342318398
------------------
-群名称:海未海未海
-群号:367695743
------------------
-群名称:碧蓝迦勒底方舟抽象群
-群号:427766169
------------------
-群名称:之江新中国成立70周年
-群号:476328543
------------------
-群名称:19.10混& 周六守门！
-群号:574978085
------------------
-群名称:三个小仙女
-群号:604248997
------------------
-群名称:一会会战专用
-群号:605611313
------------------
-群名称:公主连接-臭鼬之家
-群号:642523293
------------------
-群名称:每天8杯水的少女前线
-群号:671880082
------------------
-群名称:水龙敬棉纺种植采摘场
-群号:681748595
------------------
-群名称:RE公主链接-小花特惠群
-群号:697475156
------------------
-群名称:PPPerseus的公会群
-群号:707850931
------------------
-群名称:fox—公主连接！Re：Dive
-群号:710426430
------------------
-群名称:社会主义好⑨
-群号:741160323
------------------
-群名称:影之诗娱乐群
-群号:744299579
------------------
-群名称:可可萝测试
-群号:770429221
------------------
-群名称:兰德索尔白玉楼支部
-群号:779166649
------------------
-群名称:佐仓的可可萝和30264个
-群号:784238535
------------------
-群名称:男娼起义
-群号:819157037
------------------
-群名称:时雨时雨时
-群号:857065659
------------------
-群名称:公主链接(天使降临到
-群号:865452021
------------------
-群名称:沙雕视频翻译
-群号:869225022
------------------
-群名称:憨批咸鱼皮卡丘团
-群号:904757594
------------------
-群名称:兰德索尔炼铜协会
-群号:985476303
------------------
-群名称:SNA夕阳老年大学
-群号:1015614502'''
 
 
 '''{'font': 93119112,
