@@ -39,8 +39,8 @@ async def ts(session: CommandSession):
 bot = nonebot.get_bot()
 
 first=True
-master = [912871833,2802898563]
-manager = [912871833,1160744937,1402871154,760071008,2802898563,2125593405,1773942923,837309855,289254329]
+master = []
+manager = []
 
 
 @bot.on_message('group')
@@ -53,7 +53,6 @@ async def group_wenda_main(context):
     if first:
         wenda.rd()
         print('\n可可萝启动，记忆装载完毕\n')
-        #await bot.send_private_msg(user_id=912871833,message='可可萝启动，记忆装载完毕')
         first = False
     else:
         pass
@@ -101,8 +100,6 @@ async def private_wenda_update(context):
         if '问' in f_message and '答' in f_message and '问答' not in f_message:
             if '全局' in f_message and f_message[2]=='问' and f_user_id in master:
                 await bot.send_private_msg(user_id=f_user_id, message=wenda.w(f_message,'1'))
-#            elif '全局' not in f_message and f_message[0]=='问':
-#                await bot.send_private_msg(user_id=f_user_id, message=wenda.w(f_message,f_user_id))
             else: 
                 pass
         if f_message == '保存词库':
@@ -249,12 +246,7 @@ async def s_t_w(session: CommandSession):
         await session.send(msg)
 
 
-#    print(text)
-#{'log_id': 3472477253040444149, 'words_result_num': 6, 'words_result': [{'words': '长相思'}, {'words': '【清】纳兰性德'}, {'words': '山一程,水一程。身向榆'}, {'words': '关那畔行,夜深千帐灯。'}, {'words': '风一更,雪一更。聒碎乡'}, {'words': '心梦不成,故园无此声。'}]}
-#    text = pytesseract.image_to_string(Image.open(buf),lang='chi_sim')
-
-
-
+#私聊上报字段
 '''{'font': 93119112,
     'message': [{'type': 'text', 'data': {'text': 'tst'}}],
     'message_id': -7,
@@ -270,7 +262,7 @@ async def s_t_w(session: CommandSession):
     'user_id': 912871833,
     'to_me': True}'''
 
-
+#群聊上报字段
 '''{'anonymous': None,
     'font': 108238048,
     'group_id': 770429221,
