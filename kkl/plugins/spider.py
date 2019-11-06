@@ -33,6 +33,7 @@ async def Rnews(session: CommandSession):
     msg0 = '已为骑士君查询最新{}条新闻：'.format(len(title))
     for i in range(len(title)):
         msg = (f'\n-----------------------------------------------\nNews{i+1}:\n标题:{title[i]}\n链接:{link[i]}\n时间:{time[i]}')
+        msg0 += msg
     await session.send(message= msg0)
 
 @on_command('Tnews', aliases=('台服新闻',), only_to_me=True)
@@ -44,7 +45,7 @@ async def Tnews(session: CommandSession):
     pattern_title = '<a href="/news/newsDetail/.*?">(.*?)</a>'#标题
     title = re.findall(pattern_title,data.text)
 
-    pattern_link = '<a href="/news/(.*?)">'#链接
+    pattern_link = '<a href="/news/(.*?)"'#链接
     link0 = re.findall(pattern_link,data.text)
     link = []
     for i in link0:
@@ -56,7 +57,7 @@ async def Tnews(session: CommandSession):
     for i in time0:
         time.append(i.strip())
 
-    msg0 = '已为骑士君查询最新{}条新：'.format(len(title))
+    msg0 = '已为骑士君查询最新{}条新闻：'.format(len(title))
     for i in range(len(title)):
         msg = (f'\n-----------------------------------------------\nNews{i+1}:\n标题:{title[i]}\n链接:{link[i]}\n时间:{time[i]}')
         msg0 += msg
